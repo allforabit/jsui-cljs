@@ -24,8 +24,11 @@ $ lein cljsbuild once prod
 There are two build targets: `dev` runs the [Google Closure][closure]
 compiler backend in minimal optimisation mode, whereas `prod` turns on
 all optimisation for "production" output. The `dev` mode is much faster,
-and also helpful for debugging, whenever the output of `prod` has issues
-(most likely due to *munging*, discussed below.)
+and also helpful for debugging, whenever the output of `prod` can
+potentially throw up problems (most likely due to *munging*, discussed
+below) which are easier to solve by having a non-`prod` script to
+compare with. (In any case, it's an educational exercise to examine the
+output of compilation in both modes.)
 
 The output of `dev`, in this project, is `_main-dev.js`; the `prod`
 target writes `_main.js`. Once one of these is built, you can open
