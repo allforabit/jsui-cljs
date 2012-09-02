@@ -75,7 +75,7 @@ Distributed under the Eclipse Public License, the same as Clojure.
 [lein]: https://github.com/technomancy/leiningen
 [lein-cljsbuild]: https://github.com/emezeske/lein-cljsbuild
 [closure]: https://developers.google.com/closure/compiler/
-[docs]: blob/master/docs/uberdoc.html
+[docs]: https://github.com/downloads/cassiel/jsui-cljs/uberdoc.html
 [marginalia]: http://fogus.me/fun/marginalia/
 [luke]: http://lukevanderhart.com/2011/09/30/using-javascript-and-clojurescript.html
 [externs]: /src-cljs/externs.js

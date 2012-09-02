@@ -78,6 +78,6 @@ Original `mgraphics` setup code:
   (js/post "Loaded.\n"))
 
 ;; Bind `me`, set everything up. (`this-as` doesn't seem well documented;
-;; I found it
-;; [here](http://www.chris-granger.com/2012/02/20/overtone-and-clojurescript/)
+;; I found some discussion
+;; [here](http://www.chris-granger.com/2012/02/20/overtone-and-clojurescript/).
 (this-as me (setup me))

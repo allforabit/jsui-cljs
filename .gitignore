@@ -10,3 +10,4 @@ pom.xml
 .lein-plugins
 .lein-cljsbuild-*
 _*.js
+/docs
