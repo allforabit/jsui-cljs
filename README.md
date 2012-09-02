@@ -50,7 +50,12 @@ recompiled and reloaded into Max.
 
 ## Documentation
 
-The example is documented [here][docs] (using [Marginalia][marginalia]).
+The example is documented [here][docs] (using
+[Marginalia][marginalia]). To build the documentation:
+
+```bash
+$ lein marg src-cljs/
+```
 
 ## Notes
 
