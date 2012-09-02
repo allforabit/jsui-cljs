@@ -23,8 +23,8 @@ $ lein cljsbuild once prod
 
 There are two build targets: `dev` runs the [Google Closure][closure]
 compiler backend in minimal optimisation mode, whereas `prod` turns on
-all optimisation for "production" output. The `dev` mode is much faster,
-and also helpful for debugging, whenever the output of `prod` can
+all optimisation for "production" output. The `dev` mode compiles much faster,
+and is also helpful for debugging, whenever the output of `prod` can
 potentially throw up problems (most likely due to *munging*, discussed
 below) which are easier to solve by having a non-`prod` script to
 compare with. (In any case, it's an educational exercise to examine the
@@ -78,4 +78,4 @@ Distributed under the Eclipse Public License, the same as Clojure.
 [docs]: https://github.com/downloads/cassiel/jsui-cljs/uberdoc.html
 [marginalia]: http://fogus.me/fun/marginalia/
 [luke]: http://lukevanderhart.com/2011/09/30/using-javascript-and-clojurescript.html
-[externs]: /src-cljs/externs.js
+[externs]: /blob/master/src-cljs/externs.js
