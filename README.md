@@ -15,10 +15,10 @@ To build the Javascript example, install [Leiningen][lein] and the
 [cljsbuild plugin][lein-cljsbuild]. Then:
 
 ```bash
-lein deps
-lein cljsbuild once dev
-(or)
-lein cljsbuild once prod
+$ lein deps
+$ lein cljsbuild once dev
+  (or)
+$ lein cljsbuild once prod
 ```
 
 There are two build targets: `dev` runs the [Google Closure][closure]
@@ -37,7 +37,7 @@ that in Max 6.)
 For general development, consider running
 
 ```bash
-lein cljsbuild auto dev
+$ lein cljsbuild auto dev
 ```
 
 in the background: this automatically recompiles whenever any (Clojure)
