@@ -6,12 +6,12 @@ JSUI graphics in ClojureScript.
 
 ## Introduction
 
-This is an example of some MaxMSP JSUI graphics scripts where the
+This is an example of some simple MaxMSP JSUI graphics scripting where the
 Javascript is generated using [ClojureScript][cljs].
 
 ## Usage
 
-To build the Javascript example, install [Leiningen][lein] and the
+To build the example, install [Leiningen][lein] and the
 [cljsbuild plugin][lein-cljsbuild]. Then:
 
 ```bash

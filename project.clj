@@ -1,5 +1,5 @@
 (defproject eu.cassiel/jsui-cljs "1.0.0"
-  :description "JSUI Example for MaxMSP using ClojureScript"
+  :description "JSUI example for MaxMSP using ClojureScript"
   :url "https://github.com/cassiel/jsui-cljs"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
