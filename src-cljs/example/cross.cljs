@@ -1,3 +1,6 @@
+;; Cross example: refer to the Javascript original
+;; [here](http://www.cycling74.com/docs/max6/dynamic/c74_docs.html#jsmgraphics).
+
 (ns example.cross)
 
 (defn calc-aspect

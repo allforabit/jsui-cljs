@@ -7,7 +7,8 @@ JSUI graphics in ClojureScript.
 ## Introduction
 
 This is an example of some simple MaxMSP JSUI graphics scripting where the
-Javascript is generated using [ClojureScript][cljs].
+Javascript is generated using [ClojureScript][cljs]. The example is a
+pretty straight port of the one in the [JSUI documentation][jsmgraphics].
 
 ## Usage
 
