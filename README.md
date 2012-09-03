@@ -24,13 +24,13 @@ $ lein cljsbuild once prod
 There are two build targets: `dev` runs the [Google Closure][closure]
 compiler backend in minimal optimisation mode, whereas `prod` turns on
 all optimisation for "production" output. The `dev` mode compiles much faster,
-and is also helpful for debugging, whenever the output of `prod` can
+and is also helpful for debugging, since the output of `prod` can
 potentially throw up problems (most likely due to *munging*, discussed
 below) which are easier to solve by having a non-`prod` script to
 compare with. (In any case, it's an educational exercise to examine the
 output of compilation in both modes.)
 
-The output of `dev`, in this project, is `_main-dev.js`; the `prod`
+The output of `dev`, in this [project][proj], is `_main-dev.js`; the `prod`
 target writes `_main.js`. Once one of these is built, you can open
 `jsui-cljs.maxproj` in Max 6 to see the result. (The code will probably
 run in Max 5, but you'll need to fix up the search path and load the
@@ -43,9 +43,9 @@ For general development, consider running
 $ lein cljsbuild auto dev
 ```
 
-in the background: this automatically recompiles whenever any (Clojure)
-sources are changed. If the source sets `autowatch` to `1` (as in our
-example), then changes to ClojureScript sources will automatically be
+in the background: this automatically recompiles whenever any
+(ClojureScript) sources are changed. If the source sets `autowatch` to
+`1` (as in our example), then changes to sources will automatically be
 recompiled and reloaded into Max.
 
 ## Documentation
@@ -84,3 +84,4 @@ Distributed under the Eclipse Public License, the same as Clojure.
 [marginalia]: http://fogus.me/fun/marginalia/
 [luke]: http://lukevanderhart.com/2011/09/30/using-javascript-and-clojurescript.html
 [externs]: /cassiel/jsui-cljs/blob/master/src-cljs/externs.js
+[proj]: /cassiel/jsui-cljs/blob/master/project.clj
