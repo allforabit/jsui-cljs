@@ -7,7 +7,7 @@
 			"revision" : 7
 		}
 ,
-		"rect" : [ 442.0, 437.0, 351.0, 233.0 ],
+		"rect" : [ 729.0, 393.0, 351.0, 233.0 ],
 		"bgcolor" : [ 0.8, 0.8, 0.8, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -45,6 +45,7 @@
 				"box" : 				{
 					"filename" : "_main.js",
 					"id" : "obj-5",
+					"jsarguments" : [ "CROSS" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -59,6 +60,7 @@
 				"box" : 				{
 					"filename" : "_main.js",
 					"id" : "obj-4",
+					"jsarguments" : [ "CROSS" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -73,6 +75,7 @@
 				"box" : 				{
 					"filename" : "_main.js",
 					"id" : "obj-3",
+					"jsarguments" : [ "CROSS" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -101,6 +104,7 @@
 				"box" : 				{
 					"filename" : "_main.js",
 					"id" : "obj-1",
+					"jsarguments" : [ "CROSS" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -157,8 +161,42 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
  ],
-		"dependency_cache" : [  ]
+		"dependency_cache" : [ 			{
+				"name" : "_main.js",
+				"bootpath" : "/Users/nick/GITHUB/cassiel/jsui-cljs/projects/jsui-cljs/code",
+				"patcherrelativepath" : "../code",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+ ]
 	}
 
 }

@@ -49,10 +49,13 @@ Original code:
   "
 Paint function. Calculate aspect ratio, draw a cross. Again,
 `me` is passed in explicitly.
+
+We can get the MGraphics context via `js/mgraphics` - it's in the JS namespace -
+but I prefer doing it explicitly from `this`.
 "
   [me]
   (let [aspect (calc-aspect me)]
-    (-> js/mgraphics
+    (-> (.-mgraphics me)
         (move (- aspect) -1.0)
         (line aspect 1.0)
         (stroke)
@@ -73,14 +76,10 @@ Original `mgraphics` setup code:
     mgraphics.autofill = 0;
 "
   [me]
-  (.init js/mgraphics)
-  (set! (.-relative_coords js/mgraphics) 1)
-  (set! (.-autofill js/mgraphics) 0)
+  (.init (.-mgraphics me))
+  (set! (.-relative_coords (.-mgraphics me)) 1)
+  (set! (.-autofill (.-mgraphics me)) 0)
   (set! (.-paint me) (fn [] (paint me)))
   (set! (.-autowatch me) 1)
-  (js/post "Loaded.\n"))
-
-;; Bind `me`, set everything up. (`this-as` doesn't seem well documented;
-;; I found some discussion
-;; [here](http://www.chris-granger.com/2012/02/20/overtone-and-clojurescript/).)
-(this-as me (setup me))
+  (let [d (js/Date.)]
+    (js/post (str "Loaded example.cross at " d "\n"))))
