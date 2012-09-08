@@ -19,3 +19,4 @@ this.jsarguments = { };
 /* For referring to mgraphics via (.-mgraphics me): */
 this.mgraphics = { };
 this.post = function() { };
+this.patcher = { };

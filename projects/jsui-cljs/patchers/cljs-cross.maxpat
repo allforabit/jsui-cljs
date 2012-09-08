@@ -7,7 +7,7 @@
 			"revision" : 7
 		}
 ,
-		"rect" : [ 729.0, 393.0, 351.0, 233.0 ],
+		"rect" : [ 757.0, 82.0, 320.0, 271.0 ],
 		"bgcolor" : [ 0.8, 0.8, 0.8, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -43,7 +43,7 @@
 			}
 , 			{
 				"box" : 				{
-					"filename" : "_main.js",
+					"filename" : "_main-dev.js",
 					"id" : "obj-5",
 					"jsarguments" : [ "CROSS" ],
 					"maxclass" : "jsui",
@@ -58,7 +58,7 @@
 			}
 , 			{
 				"box" : 				{
-					"filename" : "_main.js",
+					"filename" : "_main-dev.js",
 					"id" : "obj-4",
 					"jsarguments" : [ "CROSS" ],
 					"maxclass" : "jsui",
@@ -73,7 +73,7 @@
 			}
 , 			{
 				"box" : 				{
-					"filename" : "_main.js",
+					"filename" : "_main-dev.js",
 					"id" : "obj-3",
 					"jsarguments" : [ "CROSS" ],
 					"maxclass" : "jsui",
@@ -102,7 +102,7 @@
 			}
 , 			{
 				"box" : 				{
-					"filename" : "_main.js",
+					"filename" : "_main-dev.js",
 					"id" : "obj-1",
 					"jsarguments" : [ "CROSS" ],
 					"maxclass" : "jsui",
@@ -190,7 +190,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "_main.js",
+				"name" : "_main-dev.js",
 				"bootpath" : "/Users/nick/GITHUB/cassiel/jsui-cljs/projects/jsui-cljs/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",

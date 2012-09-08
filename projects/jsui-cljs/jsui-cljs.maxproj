@@ -2,8 +2,8 @@
 	"name" : "jsui-cljs",
 	"version" : 1,
 	"creationdate" : -865681965,
-	"modificationdate" : -865676292,
-	"viewrect" : [ 581.0, 186.0, 300.0, 500.0 ],
+	"modificationdate" : -864974001,
+	"viewrect" : [ 715.0, 428.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -16,12 +16,12 @@
 				"toplevel" : 1
 			}
 ,
-			"js-test.maxpat" : 			{
+			"cljs-tickle.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "/Users/nick/GITHUB/jsui-cljs/projects/jsui-cljs/patchers/js-test.maxpat",
-					"projectrelativepath" : "../jsui-cljs/patchers/js-test.maxpat"
+					"bootpath" : "/Users/nick/GITHUB/cassiel/jsui-cljs/projects/jsui-cljs/cljs-tickle.maxpat",
+					"projectrelativepath" : "../jsui-cljs/cljs-tickle.maxpat"
 				}
 
 			}
