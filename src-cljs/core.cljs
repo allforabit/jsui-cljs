@@ -22,5 +22,7 @@
          (let [arg (nth (.-jsarguments me) 1)]
            (if arg
              (let [setup ((keyword arg) projects)]
-               (if setup (setup me) (.post me (str "no matching argument for jsui patcher arg \"" arg "\"\n"))))
+               (if setup
+                 (setup me)
+                 (.post me (str "no matching argument for jsui patcher arg \"" arg "\"\n"))))
              (.post me "jsui patcher argument needed\n"))))
