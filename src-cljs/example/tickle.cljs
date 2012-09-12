@@ -1,4 +1,4 @@
-;; tickle: examine objects in the enclosing patcher, annotate them (eventually).
+;; tickle: examine objects in the enclosing patcher, annotate them.
 
 (ns example.tickle)
 
@@ -10,11 +10,13 @@
   (f)
   (.identity_matrix g))
 
-(defn do-text [g t1 t2]
-  (let [_ (.text_measure g t1)]
-    (.text_path g t1)
-    (.move_by g -10 5)
-    (.text_path g t2)))
+(defn do-text
+  "Draw text, shifted vertically, within a rotation transformation."
+  [g f-size v-offset t]
+  (.rel_move_to g 0 v-offset)
+  (.set_font_size g f-size)
+  (.text_path g t)
+  (.stroke g))
 
 (defn paint
   "Repaint on demand."
@@ -23,7 +25,7 @@
         [my-l my-t my-r my-b] (.-rect (.-box me))
         g (.-mgraphics me)]
     ;; Cycle through the rectangles: pad out each one, and offset
-    ;; it by our own position, so that we actually draw over the
+    ;; it by our own position, so that we actually draw around the
     ;; objects in the patcher when we're underneath them.
     (doseq [d data]
       (let [[l t r b] (:rect d)
@@ -33,18 +35,27 @@
             t (- (- t padding) my-t)
             r (- (+ r padding) my-l)
             b (- (+ b padding) my-t)]
-        (.set_source_rgba g 0.8 0.5 0.0 0.7)
+        ;; Outline rectangle.
+        (.set_source_rgba g 0.6 0.3 0 1.0)
         (.rectangle_rounded g l t (- r l) (- b t) bead bead)
+        (.stroke g)
+        ;; First line of text.
         (.move_to g (+ r padding) (* 0.5 (+ t b)))
-        (with-rotate g -0.4 (fn [] (.text_path g (:class d))))))
-    (.stroke g))
-  nil)
+        (with-rotate g -0.4
+          (fn [] (do-text g 12 0 (:class d))))
+        ;; Second line of text. (Some common code here!)
+        (.move_to g (+ r padding) (* 0.5 (+ t b)))
+        (with-rotate g -0.4
+          (fn [] (do-text g 10 12 (:name d))))))))
 
 (defn find-all
   "Find all objects in the patcher. For each, return a map containing the
-   object's class and its bounding rectangle."
+   object's class, optional bracketted scripting name,  and bounding rectangle."
   [obj]
-  (if obj (cons {:class (.-maxclass obj)
+  (if obj (cons {:name
+                 (let [n (.-varname obj)]
+                   (if (zero? (count n)) "" (str "<" n ">")))
+                 :class (.-maxclass obj)
                  :rect (vec (.-rect obj))}
                 (find-all (.-nextobject obj)))
       nil))
