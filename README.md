@@ -11,11 +11,9 @@ graphics scripting where the Javascript is generated using
 [ClojureScript][cljs]:
 
 - [`example.cross`][cross]: a pretty straight port of the one
-  in the [JSUI documentation][jsmgraphics].
-
+  in the [JSUI documentation][jsmgraphics]
 - [`example.surface-work`][surface]: work-in-progress from Darwin
   Grosse's November Patch-a-Day
-
 - [`example.tickle`][tickle]: a more sophisticated annotation example
   for match patchers
 
@@ -44,12 +42,18 @@ below) which are easier to solve by having a non-`prod` script to
 compare with. (In any case, it's an educational exercise to examine the
 output of compilation in both modes.)
 
-The output of `dev`, in this [project][proj], is `_main-dev.js`; the `prod`
-target writes `_main.js`. Once one of these is built, you can open
-`jsui-cljs.maxproj` in Max 6 to see the result. (The code will probably
-run in Max 5, but you'll need to fix up the search path and load the
-patcher file manually, and Max 5's Javascript engine is much slower than
-that in Max 6.)
+The output of `dev`, in this [project][proj], is `_main-dev.js`; the
+`prod` target writes `_main.js`. Once one of these is built, you can
+open any of the patchers in `jsui-cljs.maxproj` in Max 6 to see the
+result. (The code will probably run in Max 5, but you'll need to fix up
+the search path and load the patcher files manually, and Max 5's
+Javascript engine is much slower than that in Max 6.)
+
+All the patcher files load the same Javascript file: the code executed
+is determined by the JSUI argument. Look at [`core`][core] to see the
+selection on the ClojureScript side.
+
+[core]: http://cloud.github.com/downloads/cassiel/jsui-cljs/uberdoc.html#core
 
 For general development, consider running
 
