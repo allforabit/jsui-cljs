@@ -6,9 +6,22 @@ JSUI graphics in ClojureScript.
 
 ## Introduction
 
-This is an example of some simple MaxMSP JSUI graphics scripting where the
-Javascript is generated using [ClojureScript][cljs]. The example is a
-pretty straight port of the one in the [JSUI documentation][jsmgraphics].
+This is a small collection of examples of some simple MaxMSP JSUI
+graphics scripting where the Javascript is generated using
+[ClojureScript][cljs]:
+
+- [`example.cross`][cross]: a pretty straight port of the one
+  in the [JSUI documentation][jsmgraphics].
+
+- [`example.surface-work`][surface]: work-in-progress from Darwin
+  Grosse's November Patch-a-Day
+
+- [`example.tickle`][tickle]: a more sophisticated annotation example
+  for match patchers
+
+[cross]: https://github.com/downloads/cassiel/jsui-cljs/uberdoc.html#example.cross
+[surface]: https://github.com/downloads/cassiel/jsui-cljs/uberdoc.html#example.surface-work
+[tickle]: https://github.com/downloads/cassiel/jsui-cljs/uberdoc.html#example.tickle
 
 ## Usage
 
