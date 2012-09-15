@@ -1,7 +1,8 @@
 (ns core
   (:require [example.cross :as c]
             [example.tickle :as t]
-            [example.clock :as cl]))
+            [example.clock :as cl]
+            [example.puffdraw :as pd]))
 
 ;; This is a bit hacky: I wanted a single codebase (for Marginalia) but a way
 ;; of choosing different setup functions per `js`/`jsui` instance, so I'm dispatching
@@ -12,7 +13,8 @@
   "Map project name keywords to their setup functions (which establish `paint` etc.)."
   {:CROSS c/setup
    :TICKLE t/setup
-   :CLOCK cl/setup})
+   :CLOCK cl/setup
+   :PUFFDRAW pd/setup})
 
 ;; Bind `me`, set everything up. (`this-as` doesn't seem well documented;
 ;; I found some discussion

@@ -30,7 +30,7 @@
     (set! (.-relative_coords g) 0)      ; Work in pixel coordinates.
     (set! (.-autofill g) 0)
     (set! (.-paint me) (fn [] (paint me)))
-    (set! (.-autowatch me) 1)
-    (start-task me))
+    (start-task me)
+    (set! (.-autowatch me) 1))
   (let [d (js/Date.)]
     (.post me (str "Loaded example.clock at " d "\n"))))
