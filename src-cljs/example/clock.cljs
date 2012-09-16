@@ -6,7 +6,6 @@
   "Kick off a repeating task. Note the use of a lambda passed to the `Task` constructor."
   [me]
   (let [ticker (js/Task. #(.redraw %) me (.-mgraphics me))]
-    (js/post ticker)
     (set! (.-interval ticker) 250)
     (.repeat ticker)
     ;; I don't know why I have to kick it off with `execute`: other examples don't.
