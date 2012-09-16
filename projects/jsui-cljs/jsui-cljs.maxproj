@@ -2,7 +2,7 @@
 	"name" : "jsui-cljs",
 	"version" : 1,
 	"creationdate" : -865681965,
-	"modificationdate" : -864378209,
+	"modificationdate" : -864327503,
 	"viewrect" : [ 1087.0, 447.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -12,8 +12,7 @@
 		"patchers" : 		{
 			"cljs-tickle.maxpat" : 			{
 				"kind" : "patcher",
-				"local" : 1,
-				"toplevel" : 1
+				"local" : 1
 			}
 ,
 			"cljs-cross.maxpat" : 			{

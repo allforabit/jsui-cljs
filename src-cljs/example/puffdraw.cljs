@@ -10,6 +10,7 @@
   [me but x y]
   (let [old (.-point_stash me)]
     (set! (.-point_stash me) (cons [but x y] (drop-last old)))
+    (set! (.-check_stash me) [but x y])
     (.redraw (.-mgraphics me))))
 
 (defn stash [me but x y]
@@ -22,8 +23,7 @@
                                       (nth (.-check_stash %) 0)
                                       (nth (.-check_stash %) 1)
                                       (nth (.-check_stash %) 2)) me me)]
-    (js/post ticker)
-    (set! (.-interval ticker) 300)
+    (set! (.-interval ticker) 30)
     (.repeat ticker)
     ;; I don't know why I have to kick it off with `execute`: other examples don't.
     (.execute ticker)))
@@ -47,8 +47,9 @@
               (let [[but x y] (nth points i)]
                 ;; Draw segment if click/drag (first value in step) is positive:
                 (when (pos? but)
-                  (.set_source_rgba g 0.0 0.0 1.0 (* i puff-size))
-                  (.set_line_width g (* 100.0 (- TRAIL-LENGTH i) puff-size))
+                  (.set_source_rgba g 0.0 0.0 1.0 (- 1.0 (* i puff-size)))
+                  ;; Adjustment here for the list being in reverse order:
+                  (.set_line_width g (- 100.0 (* 100.0 (- TRAIL-LENGTH i) puff-size)))
                   (.move_to g last-x last-y)
                   (.line_to g x y)
                   (.stroke g))
@@ -88,7 +89,7 @@
     (set! (.-onidleout me) (but-x-y-wrapper me stash))
 
     ;; Kick off task:
-    #_ (start-task me)
+    (start-task me)
     (set! (.-autowatch me) 1))
   (let [d (js/Date.)]
     (.post me (str "Loaded example.puffdraw at " d "\n"))))
