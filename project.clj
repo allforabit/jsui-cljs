@@ -15,5 +15,5 @@
                :prod {:source-path "src-cljs"
                       :compiler {:externs ["externs.js"]
                                  :output-to "projects/jsui-cljs/code/_main.js"
-                                 :optimizations :advanced
+                                 :optimizations :simple
                                  :pretty-print true}}}})

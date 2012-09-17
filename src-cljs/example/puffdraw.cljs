@@ -1,37 +1,45 @@
-;; Port of Darwin's puffdraw example.
+;; Port of Darwin's puffdraw example. We've not done much in terms of
+;; structural change apart from reverse the history list (since
+;; Clojure provides `cons` and `drop-last` for circular queues).
+;; The only other tidy-up we've done is to use a map for the
+;; queue entries and the stash, rather than a triplet array,
+;; making structuring/destructuring much neater.
+
 
 (ns example.puffdraw)
 
 (def TRAIL-LENGTH 50)
 
+(defn stash
+  "Stash a state."
+  [me state]
+  (set! (.-check_stash me) state))
+
 (defn bucket-add
-  "Cycle a new [but x y] into the point stash. Unlike the original Javascript, we
-   add to the front and remove from the end."
-  [me but x y]
+  "Cycle a new button/x/y into the point stash and force redraw.
+   Unlike the original Javascript, we
+   add to the front and remove from the end.
+   "
+  [me state]
   (let [old (.-point_stash me)]
-    (set! (.-point_stash me) (cons [but x y] (drop-last old)))
-    (set! (.-check_stash me) [but x y])
+    (set! (.-point_stash me) (cons state (drop-last old)))
+    (stash me state)
     (.redraw (.-mgraphics me))))
 
-(defn stash [me but x y]
-  (set! (.-check_stash me) [but x y]))
-
 (defn start-task
-  "Kick off a repeating task. Note the use of a lambda passed to the `Task` constructor."
+  "Kick off a repeating task to add the stash to the queue.
+   Note the use of a lambda passed to the `Task` constructor."
   [me]
-  (let [ticker (js/Task. #(bucket-add %
-                                      (nth (.-check_stash %) 0)
-                                      (nth (.-check_stash %) 1)
-                                      (nth (.-check_stash %) 2)) me me)]
+  (let [ticker (js/Task. #(bucket-add % (.-check_stash %)) me me)]
     (set! (.-interval ticker) 30)
     (.repeat ticker)
     ;; I don't know why I have to kick it off with `execute`: other examples don't.
     (.execute ticker)))
 
 (defn paint
-  "Paint does the work."
+  "Paint does the work. Iterate through the circular queue of states, drawing
+   a fat line from each point to the next (if button down)."
   [me]
-
   (let [rect (.-rect (.-box me))
         width (- (nth rect 2) (nth rect 0))
         height (- (nth rect 3) (nth rect 1))
@@ -44,9 +52,9 @@
     (.fill g)
 
     (letfn [(iter [i last-x last-y]
-              (let [[but x y] (nth points i)]
+              (let [{:keys [button x y]} (nth points i)]
                 ;; Draw segment if click/drag (first value in step) is positive:
-                (when (pos? but)
+                (when button
                   (.set_source_rgba g 0.0 0.0 1.0 (- 1.0 (* i puff-size)))
                   ;; Adjustment here for the list being in reverse order:
                   (.set_line_width g (- 100.0 (* 100.0 (- TRAIL-LENGTH i) puff-size)))
@@ -57,25 +65,27 @@
                 (when (< i (- TRAIL-LENGTH 1))
                   (recur (inc i) x y))))]
       (iter 1
-            (nth (nth points 0) 1)
-            (nth (nth points 0) 2)))))
+            (:x (first points))
+            (:y (first points))))))
 
-(defn but-x-y-wrapper
-  "Wrap a function taking (me, x, y, but) into one taking all the click/drag/idle
-   key modifier args, which is what JSUI expect to call. (We don't care about
+(defn button-x-y-wrapper
+  "Wrap a function taking (me, {x, y, button}) into one taking all the click/drag/idle
+   key modifier args, which is what JSUI expects to call. (We don't care about
    any modifier keys.) Our functions take `me` (a.k.a. `this`) to get hold of
-   'global' bindings."
+   'global' bindings. Oh: we transform `button` into a boolean. Because you're worth it."
   [me f]
-  (fn [x y but cmd shift capslock option ctrl] (f me but x y)))
+  (fn [x y button cmd shift capslock option ctrl]
+    (f me {:button (> button 0) :x x :y y})))
 
 (defn setup
   "Set up all drawing modes, `paint`, and the autowatch state. Start the
    Task."
   [me]
-  (let [g (.-mgraphics me)]
+  (let [g (.-mgraphics me)
+        init-state {:button false :x 0 :y 0}]
     ;; Application setup:
-    (set! (.-check_stash me) [0 0 0])
-    (set! (.-point_stash me) (repeat TRAIL-LENGTH [0 0 0]))
+    (set! (.-check_stash me) init-state)
+    (set! (.-point_stash me) (repeat TRAIL-LENGTH init-state))
 
     ;; Graphics setup.
     (.init g)
@@ -83,10 +93,10 @@
     (set! (.-autofill g) 0)
     (set! (.-paint me) (fn [] (paint me)))
     ;; Wrap the mouse handler functions.
-    (set! (.-onclick me) (but-x-y-wrapper me bucket-add))
-    (set! (.-ondrag me) (but-x-y-wrapper me bucket-add))
-    (set! (.-onidle me) (but-x-y-wrapper me stash))
-    (set! (.-onidleout me) (but-x-y-wrapper me stash))
+    (set! (.-onclick me) (button-x-y-wrapper me bucket-add))
+    (set! (.-ondrag me) (button-x-y-wrapper me bucket-add))
+    (set! (.-onidle me) (button-x-y-wrapper me stash))
+    (set! (.-onidleout me) (button-x-y-wrapper me stash))
 
     ;; Kick off task:
     (start-task me)

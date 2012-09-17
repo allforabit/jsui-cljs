@@ -1,6 +1,35 @@
 /*  This is an essential, but incomplete, spec. of environmental variables in the
     Max JSUI world that we don't want to have munged. (Contributions welcome.) */
 
+function Task() { }
+Task.interval;
+
+var mgraphics;
+mgraphics.init;
+mgraphics.move_to;
+mgraphics.line_to;
+mgraphics.rectangle;
+mgraphics.stroke;
+mgraphics.fill;
+mgraphics.redraw;
+mgraphics.relative_coords;
+mgraphics.set_source_rgb;
+mgraphics.set_source_rgba;
+mgraphics.set_line_width;
+mgraphics.set_font_size;
+mgraphics.text_path;
+mgraphics.autofill;
+
+
+this.autowatch;
+this.paint;
+this.box;
+this.jsarguments;
+this.mgraphics;
+this.post;
+this.patcher;
+
+/***
 var mgraphics = {
     init: function() { },
     move_to: function() { },
@@ -17,14 +46,7 @@ var mgraphics = {
     text_path: function() { },
     autofill: 0
 };
+***/
 
 /* This one makes no sense to me: Task() actually returns something with a .interval. */
-var Task = function(f) { f.interval };
-
-this.autowatch = 0;
-this.paint = function() { };
-this.box = { };
-this.jsarguments = { };
-this.mgraphics = { };
-this.post = function() { };
-this.patcher = { };
+/* var Task = function(f) { f.interval }; */
