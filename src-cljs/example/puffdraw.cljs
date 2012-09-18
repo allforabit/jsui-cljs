@@ -22,7 +22,8 @@
    "
   [me state]
   (let [old (.-point_stash me)]
-    (set! (.-point_stash me) (cons state (drop-last old)))
+    ;; Danger Will Robinson: this is a lazy structure and must be forced (in `paint()`).
+    (set! (.-point_stash me) (take TRAIL-LENGTH (cons state old)))
     (stash me state)
     (.redraw (.-mgraphics me))))
 
@@ -38,7 +39,13 @@
 
 (defn paint
   "Paint does the work. Iterate through the circular queue of states, drawing
-   a fat line from each point to the next (if button down)."
+   a fat line from each point to the next (if button down).
+
+   In our first version we retained the 'for-loop' structure of the iteration,
+   looking at the first `TRAIL-LENGTH` items only. This wasn't forcing evaluation
+   point stash and we were running out of heap or blowing up the garbage
+   collector as suspended tails accumulated. This version does a proper traversal
+   with a `rest` call to force the tail."
   [me]
   (let [rect (.-rect (.-box me))
         width (- (nth rect 2) (nth rect 0))
@@ -51,8 +58,9 @@
     (.rectangle g 0 0 width height)
     (.fill g)
 
-    (letfn [(iter [i last-x last-y]
-              (let [{:keys [button x y]} (nth points i)]
+    ;; I bet this can be done as a reduce:
+    (letfn [(iter [pts i last-x last-y]
+              (let [{:keys [button x y]} (first pts)]
                 ;; Draw segment if click/drag (first value in step) is positive:
                 (when button
                   (.set_source_rgba g 0.0 0.0 1.0 (- 1.0 (* i puff-size)))
@@ -61,10 +69,10 @@
                   (.move_to g last-x last-y)
                   (.line_to g x y)
                   (.stroke g))
-                ;; Iterate through steps:
-                (when (< i (- TRAIL-LENGTH 1))
-                  (recur (inc i) x y))))]
-      (iter 1
+                ;; Danger Will Robinson: (rest '(x)) is (), not nil.
+                (let [r (seq (rest pts))]
+                  (when r (recur r(inc i) x y)))))]
+      (iter points 1
             (:x (first points))
             (:y (first points))))))
 
