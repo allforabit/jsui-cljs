@@ -7,7 +7,8 @@
 			"revision" : 7
 		}
 ,
-		"rect" : [ 262.0, 408.0, 735.0, 552.0 ],
+		"rect" : [ 323.0, 534.0, 336.0, 337.0 ],
+		"bgcolor" : [ 0.8, 0.8, 0.8, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -35,7 +36,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 195.0, 50.0, 122.0, 16.0 ],
+					"patching_rect" : [ 195.0, 15.0, 122.0, 16.0 ],
 					"text" : "filename _main.js"
 				}
 
@@ -49,7 +50,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 30.0, 50.0, 148.0, 16.0 ],
+					"patching_rect" : [ 30.0, 15.0, 148.0, 16.0 ],
 					"text" : "filename _main-dev.js"
 				}
 
@@ -64,7 +65,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 30.0, 105.0, 420.0, 420.0 ],
+					"patching_rect" : [ 30.0, 50.0, 270.0, 270.0 ],
 					"presentation_rect" : [ 0.0, 0.0, 420.0, 420.0 ]
 				}
 

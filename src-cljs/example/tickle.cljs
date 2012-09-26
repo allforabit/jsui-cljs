@@ -68,8 +68,20 @@
   (set! (.-data me) (find-all (.-firstobject (.-patcher me))))
   (.redraw (.-mgraphics me)))
 
+(defn start-task
+  "Kick off a task to periodically scan for objects in the patcher.
+   This is rather expensive (hence the slow, 250msec strobe): we
+   should only redraw when something has changed."
+  [me]
+    (let [ticker (js/Task. bang me me)]
+    (set! (.-interval ticker) 250)
+    (.repeat ticker)
+    ;; I don't know why I have to kick it off with `execute`: other examples don't.
+    (.execute ticker)))
+
 (defn setup
-  "Set up all drawing modes, `paint`, `bang` and the autowatch state."
+  "Set up all drawing modes, `paint`, `bang` and the autowatch state.
+   Also: start the strobing task to track changes to the patcher."
   [me]
   (let [g (.-mgraphics me)]
     (.init g)
@@ -78,6 +90,8 @@
     (set! (.-paint me) (fn [] (paint me)))
     (set! (.-bang me) (fn [] (bang me)))
     (set! (.-autowatch me) 1)
-    (bang me))
+    (start-task me)
+    ;;(bang me)
+    )
   (let [d (js/Date.)]
     (.post me (str "Loaded example.tickle at " d "\n"))))

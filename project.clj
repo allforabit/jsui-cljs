@@ -16,4 +16,4 @@
                       :compiler {:externs ["externs.js"]
                                  :output-to "projects/jsui-cljs/code/_main.js"
                                  :optimizations :simple
-                                 :pretty-print true}}}})
+                                 :pretty-print false}}}})

@@ -1,6 +1,6 @@
 ;; Port of Darwin's puffdraw example. We've not done much in terms of
-;; structural change apart from reverse the history list (since
-;; Clojure provides `cons` and `drop-last` for circular queues).
+;; structural change apart from reverse the history list (so that we
+;; can `cons` the new values).
 ;; The only other tidy-up we've done is to use a map for the
 ;; queue entries and the stash, rather than a triplet array,
 ;; making structuring/destructuring much neater.
@@ -43,9 +43,9 @@
 
    In our first version we retained the 'for-loop' structure of the iteration,
    looking at the first `TRAIL-LENGTH` items only. This wasn't forcing evaluation
-   point stash and we were running out of heap or blowing up the garbage
+   of `point_stash` and we were running out of heap or blowing up the garbage
    collector as suspended tails accumulated. This version does a proper traversal
-   with a `rest` call to force the tail."
+   with a `rest` call to force the tail. Moral of this story: stay idiomatic."
   [me]
   (let [rect (.-rect (.-box me))
         width (- (nth rect 2) (nth rect 0))
@@ -71,7 +71,7 @@
                   (.stroke g))
                 ;; Danger Will Robinson: (rest '(x)) is (), not nil.
                 (let [r (seq (rest pts))]
-                  (when r (recur r(inc i) x y)))))]
+                  (when r (recur r (inc i) x y)))))]
       (iter points 1
             (:x (first points))
             (:y (first points))))))

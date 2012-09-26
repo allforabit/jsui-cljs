@@ -4,12 +4,12 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 0,
-			"revision" : 7
+			"revision" : 8
 		}
 ,
-		"rect" : [ 513.0, 207.0, 657.0, 547.0 ],
+		"rect" : [ 41.0, 90.0, 657.0, 547.0 ],
 		"bgcolor" : [ 0.901961, 0.901961, 0.901961, 1.0 ],
-		"bglocked" : 0,
+		"bglocked" : 1,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
@@ -28,6 +28,21 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Anonymous Pro",
+					"fontsize" : 12.0,
+					"frgb" : 0.0,
+					"id" : "obj-23",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 180.0, 360.0, 45.0, 30.0 ],
+					"text" : "Hello world"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-27",
@@ -60,7 +75,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 180.0, 410.0, 200.0, 20.0 ]
+					"patching_rect" : [ 210.0, 410.0, 200.0, 20.0 ]
 				}
 
 			}
@@ -195,10 +210,10 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 0,
-							"revision" : 7
+							"revision" : 8
 						}
 ,
-						"rect" : [ 528.0, 602.0, 128.0, 128.0 ],
+						"rect" : [ 56.0, 485.0, 128.0, 128.0 ],
 						"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -240,7 +255,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 0,
-							"revision" : 7
+							"revision" : 8
 						}
 ,
 						"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
@@ -336,7 +351,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 300.0, 260.0, 50.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 30.0, 80.0, 50.0, 18.0 ]
+					"presentation_rect" : [ 150.0, 110.0, 50.0, 18.0 ]
 				}
 
 			}
@@ -350,7 +365,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 15.0, 225.0, 75.0, 45.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 10.0, 75.0, 45.0 ]
+					"presentation_rect" : [ 150.0, 170.0, 75.0, 45.0 ]
 				}
 
 			}
@@ -381,7 +396,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 360.0, 205.0, 50.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 65.0, 50.0, 18.0 ]
+					"presentation_rect" : [ 165.0, 235.0, 50.0, 18.0 ]
 				}
 
 			}
@@ -446,8 +461,8 @@
 			}
 , 			{
 				"name" : "jsui_default.js",
-				"bootpath" : "/Users/nick/GITHUB/cassiel/jsui-cljs/projects/jsui-cljs/code",
-				"patcherrelativepath" : "../code",
+				"bootpath" : "/Applications/Max6 6.0.8/Cycling '74/jsui-library",
+				"patcherrelativepath" : "../../../../../../../../Applications/Max6 6.0.8/Cycling '74/jsui-library",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
