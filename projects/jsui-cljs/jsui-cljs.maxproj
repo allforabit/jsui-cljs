@@ -1,9 +1,9 @@
 {
 	"name" : "jsui-cljs",
 	"version" : 1,
-	"creationdate" : -865681965,
-	"modificationdate" : -864327503,
-	"viewrect" : [ 1087.0, 447.0, 300.0, 500.0 ],
+	"creationdate" : -865682086,
+	"modificationdate" : 3506102720,
+	"viewrect" : [ 1113.0, 394.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -24,8 +24,8 @@
 				"kind" : "patcher",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "/Users/nick/GITHUB/cassiel/jsui-cljs/projects/jsui-cljs/patchers/cljs-clock.maxpat",
-					"projectrelativepath" : "../jsui-cljs/patchers/cljs-clock.maxpat"
+					"bootpath" : "~/GITHUB/cassiel/jsui-cljs/projects/jsui-cljs/patchers",
+					"projectrelativepath" : "./patchers"
 				}
 
 			}
@@ -34,8 +34,8 @@
 				"kind" : "patcher",
 				"local" : 1,
 				"singleton" : 				{
-					"bootpath" : "/Users/nick/GITHUB/cassiel/jsui-cljs/projects/jsui-cljs/patchers/cljs-puffdraw.maxpat",
-					"projectrelativepath" : "../jsui-cljs/patchers/cljs-puffdraw.maxpat"
+					"bootpath" : "~/GITHUB/cassiel/jsui-cljs/projects/jsui-cljs/patchers",
+					"projectrelativepath" : "./patchers"
 				}
 
 			}
@@ -56,5 +56,7 @@
 
 	}
 ,
-	"detailsvisible" : 0
+	"detailsvisible" : 1,
+	"amxdtype" : 0,
+	"readonly" : 1
 }
