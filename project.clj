@@ -3,8 +3,9 @@
   :url "https://github.com/cassiel/jsui-cljs"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.6.0"]]
-  :plugins [[lein-cljsbuild "1.0.4"]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [org.clojure/clojurescript "1.7.228"]]
+  :plugins [[lein-cljsbuild "1.1.2"]
             [lein-marginalia "0.8.0"]]
   :cljsbuild {:builds [{:source-paths ["src-cljs"],
                         :id "prod",
