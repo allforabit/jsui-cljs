@@ -7,13 +7,13 @@
                  [org.clojure/clojurescript "1.7.228"]]
   :plugins [[lein-cljsbuild "1.1.2"]
             [lein-marginalia "0.8.0"]]
-  :cljsbuild {:builds [{:id "prod",
-                        :compiler {:externs ["externs.js"],
-                                   :optimizations :simple,
-                                   :output-to "projects/jsui-cljs/code/_main.js",
-                                   :pretty-print false}}
-                       {:id "dev",
-                        :compiler {:externs ["externs.js"],
-                                   :optimizations :whitespace,
-                                   :output-to "projects/jsui-cljs/code/_main-dev.js",
-                                   :pretty-print true}}]})
+  :cljsbuild {:builds {:prod {:compiler {:source-paths ["src-cljs"]
+                                         :externs ["externs.js"],
+                                         :optimizations :simple,
+                                         :output-to "projects/jsui-cljs/code/_main.js",
+                                         :pretty-print false}}
+                       :dev {:compiler {:source-paths ["src-cljs"]
+                                        :externs ["externs.js"],
+                                        :optimizations :whitespace,
+                                        :output-to "projects/jsui-cljs/code/_main-dev.js",
+                                        :pretty-print true}}}})
