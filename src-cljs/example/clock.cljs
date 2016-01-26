@@ -14,6 +14,7 @@
 (defn paint
   "Paint does the work: print the date."
   [me]
+  (.post me (str "Ticking: " (js/Date.) "\n"))
   (let [g (.-mgraphics me)]
     (.move_to g 10 30)
     (.set_font_size g 24)
