@@ -1,7 +1,5 @@
 # jsui-cljs
 
-![splash](https://github.com/downloads/cassiel/jsui-cljs/jsui-splash-2.png)
-
 JSUI graphics in ClojureScript.
 
 ## Introduction
